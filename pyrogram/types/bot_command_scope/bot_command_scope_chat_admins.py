@@ -1,5 +1,5 @@
 #  Pyrogram - Telegram MTProto API Client Library for Python
-#  Copyright (C) 2017-present Dan <https://github.com/delivrance>
+#  Copyright (C) 2017-2021 Dan <https://github.com/delivrance>
 #
 #  This file is part of Pyrogram.
 #
@@ -16,14 +16,25 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .authorization import *
-from .bot_command_scope import *
-from .bots_and_keyboards import *
-from .inline_mode import *
-from .input_media import *
-from .input_message_content import *
-from .list import List
-from .messages_and_media import *
-from .object import Object
-from .update import *
-from .user_and_chats import *
+from typing import Union
+
+import pyrogram
+from pyrogram import raw
+from .bot_command_scope import BotCommandScope
+
+
+class BotCommandScopeChatAdmins(BotCommandScope):
+    """Represents the scope of bot commands, covering all administrators of a specific group or supergroup chat.
+
+    Parameters:
+        chat_id (``int`` | ``str``, *optional*):
+            Unique identifier (int) or username (str) of the target chat.
+    """
+
+    def __init__(self, chat_id: Union[int, str]):
+        self.chat_id = chat_id
+
+    async def write(self, client: "pyrogram.Client"):
+        return raw.types.BotCommandScopePeerAdmins(
+            peer=await client.resolve_peer(self.chat_id)
+        )
