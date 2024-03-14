@@ -1,0 +1,28 @@
+[project]
+name = "tgramclient"
+dynamic = ["version"]
+authors = [
+  { name="Anand", email="anandpskerala@gmail.com" },
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["pyaes==1.6.1", "pysocks==1.7.1", "aiosqlite>=0.19.0"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "tgramclient/__init__.py"
+
+[tool.hatch.build.hooks.custom]
