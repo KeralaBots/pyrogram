@@ -1,5 +1,5 @@
 /.venv
-/.idea
+.idea
 tgramclient/raw/base
 tgramclient/raw/functions
 tgramclient/raw/types
