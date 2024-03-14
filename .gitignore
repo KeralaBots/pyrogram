@@ -1,3 +1,7 @@
 /.venv
 /.idea
+tgramclient/raw/base
+tgramclient/raw/functions
+tgramclient/raw/types
+tgramclient/raw/all.py
 test.py
